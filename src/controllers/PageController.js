@@ -14,7 +14,9 @@ import User from "../models/User.js";
 export const home = async (req, res) => {
   // Get the menu items, user data and the homepage data from the database.
   const menuItems = await NavigationItem.query();
-  const userData = await User.query().findById(1);
+  const userData = await User.query()
+    .findById(1)
+    .withGraphFetched("[meta, pets]");
   const pageData = await Page.query().findOne({
     is_homepage: true,
   });

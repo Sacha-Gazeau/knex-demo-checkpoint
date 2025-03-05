@@ -1,16 +1,40 @@
 <main class="home">
-  <h1><%= title %></h1>
+  <h1>
+    <%= title %>
+  </h1>
   <article class="content">
     <%- content %>
   </article>
   <article class="user">
-    <h2>About <%= userData?.firstname %> <%= userData?.lastname %></h2>
-    <p><%= userData?.bio %></p>
+    <h2>About <%= userData?.firstname %>
+        <%= userData?.lastname %>
+    </h2>
+    <p>
+      <%= userData?.bio %>
+    </p>
     <h3>Interests</h3>
     <ul>
       <% userData?.interests?.forEach(function(interest) { %>
-        <li><%= interest.name %></li>
-      <% }); %>
+        <li>
+          <%= interest.name %>
+        </li>
+        <% }); %>
+    </ul>
+    <h3>Meta</h3>
+    <ul>
+      <li>Favorite quote: <%=userData?.meta?.quote %>
+      </li>
+      <li>Location: <%=userData?.meta?.location %>
+      </li>
+    </ul>
+    <h3>Pets</h3>
+    <ul>
+      <% userData.pets.forEach(pet=> { %>
+        <li>Pet name: <%= pet.name %>
+        </li>
+        <li>Pet Age: <%= pet.age %>
+        </li>
+        <% }); %>
     </ul>
   </article>
 </main>

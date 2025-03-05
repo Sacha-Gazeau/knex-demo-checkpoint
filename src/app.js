@@ -29,14 +29,18 @@ Object.assign(app.locals, helpers); // make the helpers available to all views
 // These routes will return JSON data.
 
 // Interest API routes
-app.get("/api/interest", API_InterestController.index);
-app.get("/api/interest/:id", API_InterestController.show);
-app.post("/api/interest", API_InterestController.store);
-app.put("/api/interest", API_InterestController.update);
-app.delete("/api/interest/:id", API_InterestController.destroy);
+app.get("/api/interests", API_InterestController.index);
+app.get("/api/interests/:id", API_InterestController.show);
+app.post("/api/interests", API_InterestController.store);
+app.put("/api/interests/:id", API_InterestController.update);
+app.delete("/api/interests/:id", API_InterestController.destroy);
 
 // User API routes
-app.get("/api/user", API_UserController.index);
+app.get("/api/users", API_UserController.index);
+app.get("/api/users/:id", API_UserController.show);
+app.post("/api/users", API_UserController.store);
+app.put("/api/users/:id", API_UserController.update);
+app.delete("/api/users/:id", API_UserController.destroy);
 
 // Catch non-existing API routes
 app.use("/api/*", (req, res) => {
@@ -57,6 +61,7 @@ app.get("/:slug", PageController.page);
 app.get("*", (req, res) => {
   res.status(404).send("Page not found.");
 });
+
 // ---------------------- Error handling ----------------------
 // When an error occurs in the app, the error handling middleware will be called.
 
